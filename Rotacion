@@ -24,7 +24,7 @@
   </head>
   <body>
     
-    <h1>Sistema solar sin nombres</h1>
+    <h1>Pelota volando</h1>
 
     <canvas id="canvas" width="1000" height="800"></canvas>
     <script src="utils.js"></script>
