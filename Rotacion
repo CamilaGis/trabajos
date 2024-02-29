@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A6 - Animación rotación al mouse</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        text-align: center;
+        background-color: black;
+
+      }
+      canvas{
+          text-align: center;
+          border: 4px solid white;
+          background-color: black;
+      }
+      h1{
+            text-align: center;
+            font-size: xx-large;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: white;
+        }
+  </style>
+  </head>
+  <body>
+    
+    <h1>Sistema solar sin nombres</h1>
+
+    <canvas id="canvas" width="1000" height="800"></canvas>
+    <script src="utils.js"></script>
+    
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas),
+
+          pelota = new Image();
+          pelota.src = "pelota.png";
+         {
+          drawFrame();
+        };
+
+      (function drawFrame () {  //Esta es del sol
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+        context.save();
+        
+        var x = canvas.width/2;
+        var y = canvas.height/2;
+
+        context.translate(x, y);
+        var dx = mouse.x - x, 
+            dy = mouse.y - y;
+        var radianes = Math.atan2(dy, dx); 
+        console.log(radianes);
+        context.rotate(radianes); 
+
+        context.drawImage(pelota,-pelota.width/2, -pelota.height/2);
+        
+
+        context.restore();
+
+      }());
+
+    };
+    </script>
+  </body>
+</html>
